@@ -115,7 +115,7 @@ Using Docker
 **Note:** This command can be configured using flags top provide a specific outcome.
 
 ```bash
-docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:3.12 /bin/ash -c 'cd && apk update && apk add bash curl git && curl -sL git.io/mplibtorrent | bash -s all && ash'
+docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:latest /bin/ash -c 'cd && apk update && apk add bash curl git && curl -sL git.io/mplibtorrent | bash -s all && ash'
 ```
 
 #### Optional - Setup Alpine Docker fist
@@ -123,7 +123,7 @@ docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:3.12 /bin/ash -c 'cd 
 Optionally you could create and configure the docker first and then use the script from within the container.
 
 ```bash
-docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:3.12 /bin/ash -c 'cd && apk update && apk add bash curl git && ash'
+docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:latest /bin/ash -c 'cd && apk update && apk add bash curl git && ash'
 ```
 
 #### Optional - Download and run inside Alpine docker
