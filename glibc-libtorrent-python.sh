@@ -24,7 +24,7 @@
 #
 set -e -a # https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
 #
-libtorrent_version='1.2' # Set this here so it is easy to see and change
+libtorrent_version='2.0' # Set this here so it is easy to see and change
 #
 unset PARAMS BUILD_DIR SKIP_DELETE GITHUB_TAG LIBTORRENT_GITHUB_TAG GIT_PROXY CURL_PROXY TEST_BUILD MODULES_TEST GET_NUMPY CRYPTO_TYPE # Make sure this array of variables is reset to null when the script is loaded.
 #
