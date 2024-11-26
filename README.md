@@ -72,7 +72,7 @@ Using Docker
 **Note:** This command can be configured using flags top provide a specific outcome. Change `ubuntu:20.04` to `debian:stable` to use Debian.
 
 ```bash
-docker run -it -p 8112:8112 -v $HOME/bindings:/root ubuntu:20.04 /bin/bash -c 'cd && apt-get update && apt-get install -y curl && curl -sL git.io/gplibtorrent | bash -s all && bash'
+docker run -it -p 8112:8112 -v $HOME/bindings:/root ubuntu:latest /bin/bash -c 'cd && apt-get update && apt-get install -y curl git && curl -sL git.io/gplibtorrent | bash -s all && bash'
 ```
 
 #### Optional - Setup Ubuntu/Debian Docker fist
@@ -80,7 +80,7 @@ docker run -it -p 8112:8112 -v $HOME/bindings:/root ubuntu:20.04 /bin/bash -c 'c
 Optionally you could create and configure the docker first and then use the script from within the container.
 
 ```bash
-docker run -it -p 8112:8112 -v $HOME/bindings:/root ubuntu:20.04 /bin/bash -c 'cd && apt-get update && apt-get install -y curl && bash'
+docker run -it -p 8112:8112 -v $HOME/bindings:/root ubuntu:latest /bin/bash -c 'cd && apt-get update && apt-get install -y curl git && bash'
 ```
 
 #### Optional - Download and run inside Ubuntu/Debian docker
@@ -115,7 +115,7 @@ Using Docker
 **Note:** This command can be configured using flags top provide a specific outcome.
 
 ```bash
-docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:3.12 /bin/ash -c 'cd && apk update && apk add bash curl && curl -sL git.io/mplibtorrent | bash -s all && ash'
+docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:3.12 /bin/ash -c 'cd && apk update && apk add bash curl git && curl -sL git.io/mplibtorrent | bash -s all && ash'
 ```
 
 #### Optional - Setup Alpine Docker fist
@@ -123,7 +123,7 @@ docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:3.12 /bin/ash -c 'cd 
 Optionally you could create and configure the docker first and then use the script from within the container.
 
 ```bash
-docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:3.12 /bin/ash -c 'cd && apk update && apk add bash curl && ash'
+docker run -it -p 8112:8112 -v $HOME/bindings:/root alpine:3.12 /bin/ash -c 'cd && apk update && apk add bash curl git && ash'
 ```
 
 #### Optional - Download and run inside Alpine docker
