@@ -844,7 +844,7 @@ if [[ "${!app_name_skip:-yes}" = 'no' ]] || [[ "$1" = "$app_name" ]]; then
 		#
 		cd "$folder_name/bindings/python"
 		#
-		"$install_dir/boost/b2" -j"$(nproc)" "${pb_libtorrent_crypto[@]}" address-model="$(getconf LONG_BIT)" cxxstd="${cxxstd:-17}" lto=on fpic=on dht=on encryption=on i2p=on extensions=on variant=release threading=multi libtorrent-link=static boost-link=static cxxflags="$CXXFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS" ${LIBTORRENT_INSTALL_MODULE} 2>&1 | tee "$install_dir/logs/libtorrent.log.txt"
+		"$install_dir/boost/b2" -j"$(nproc)" "${pb_libtorrent_crypto[@]}" address-model="$(getconf LONG_BIT)" cxxstd="${cxxstd:-17}" fpic=on dht=on encryption=on i2p=on extensions=on variant=release threading=multi libtorrent-link=static boost-link=static cxxflags="$CXXFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS" ${LIBTORRENT_INSTALL_MODULE} 2>&1 | tee "$install_dir/logs/libtorrent.log.txt"
 		#
 		[[ -f "$install_dir/libtorrent/bindings/python/libtorrent.so" ]] && cp "$install_dir/libtorrent/bindings/python/libtorrent.so" "$install_dir/completed/libtorrent.so"
 		#
