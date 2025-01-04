@@ -183,7 +183,7 @@ set_python_version() {
 # This function will check for a list of defined dependencies from the REQUIRED_PKGS array. Applications like python3 and python2 are dynamically set
 #####################################################################################################################################################
 check_dependencies() {
-        REQUIRED_PKGS=("bison" "curl" "build-essential" "pkg-config" "automake" "libtool" "git" "perl" "python${PYTHON_VERSION}" "python${PYTHON_VERSION}-dev" "python${PYTHON_VERSION/2/}-numpy" "${GET_PIP}") # Define our list of required core packages in an array.
+        REQUIRED_PKGS=("bison" "curl" "build-essential" "pkg-config" "automake" "libtool" "git" "perl" "python${PYTHON_VERSION}" "python${PYTHON_VERSION}-dev" "python${PYTHON_VERSION/2/}-numpy" "${GET_PIP}" "libgoogle-perftools-dev" "libunwind-dev" "liblzma-dev") # Define our list of required core packages in an array.
         #
         ## Check for required dependencies
         #
@@ -847,7 +847,7 @@ if [[ "${!app_name_skip:-yes}" = 'no' ]] || [[ "$1" = "$app_name" ]]; then
                 #
                 cd "$folder_name/bindings/python"
                 #
-                "$install_dir/boost/b2" -j"$(nproc)" "${pb_libtorrent_crypto[@]}" address-model="$(getconf LONG_BIT)" cxxstd="${cxxstd:-17}" fpic=on dht=on encryption=on i2p=on extensions=on variant=release threading=multi libtorrent-link=static boost-link=static cxxflags="$CXXFLAGS" cflags="$CPPFLAGS" linkflags="$LDFLAGS -lgcov --coverage" ${LIBTORRENT_INSTALL_MODULE} 2>&1 | tee "$install_dir/logs/libtorrent.log.txt"
+                "$install_dir/boost/b2" -j"$(nproc)" "${pb_libtorrent_crypto[@]}" address-model="$(getconf LONG_BIT)" cxxstd="${cxxstd:-17}" fpic=on dht=on encryption=on i2p=on extensions=on variant=release threading=multi libtorrent-link=static boost-link=static cxxflags="$CXXFLAGS -flto=auto -ffat-lto-objects" cflags="$CPPFLAGS -flto=auto -ffat-lto-objects" linkflags="$LDFLAGS -ltcmalloc -lunwind -llzma -lgcov --coverage" ${LIBTORRENT_INSTALL_MODULE} 2>&1 | tee "$install_dir/logs/libtorrent.log.txt"
                 #
                 [[ -f "$install_dir/libtorrent/bindings/python/libtorrent.so" ]] && cp "$install_dir/libtorrent/bindings/python/libtorrent.so" "$install_dir/completed/libtorrent.so"
                 #
